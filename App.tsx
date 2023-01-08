@@ -7,6 +7,7 @@ import {
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/theme';
 import { Select } from './src/components/Select';
+import { Input } from './src/components/Input';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
@@ -25,10 +26,7 @@ export default function App() {
           padding: 16,
         }}
       >
-        <View style={{ flexDirection: 'row' }}>
-          <Select title="Sim" />
-          <Select title="Não" type="danger" active={true} />
-        </View>
+        <Input />
       </View>
     </ThemeProvider>
   );
