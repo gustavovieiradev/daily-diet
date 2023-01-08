@@ -6,7 +6,7 @@ import {
 } from '@expo-google-fonts/nunito';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/theme';
-import { Button } from './src/components/Button';
+import { Select } from './src/components/Select';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
@@ -26,8 +26,8 @@ export default function App() {
         }}
       >
         <View style={{ flexDirection: 'row' }}>
-          <Button title="Label batata" mode="outlined" status="active" />
-          <Button title="Label" />
+          <Select title="Sim" />
+          <Select title="Não" type="danger" active={true} />
         </View>
       </View>
     </ThemeProvider>

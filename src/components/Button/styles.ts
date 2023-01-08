@@ -31,6 +31,7 @@ export const Container = styled.TouchableOpacity<ContainerProps>`
       background-color: ${status === 'active'
         ? theme.COLORS.GRAY_500
         : theme.COLORS.WHITE};
+      border: 1px solid ${theme.COLORS.GRAY_100};
     `};
 `;
 
