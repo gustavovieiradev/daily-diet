@@ -6,8 +6,8 @@ import {
 } from '@expo-google-fonts/nunito';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/theme';
-import { Select } from './src/components/Select';
-import { Input } from './src/components/Input';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Home } from './src/screens/Home';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
@@ -18,16 +18,9 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: 16,
-        }}
-      >
-        <Input />
-      </View>
+      <SafeAreaProvider>
+        <Home />
+      </SafeAreaProvider>
     </ThemeProvider>
   );
 }
