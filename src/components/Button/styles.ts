@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native';
+import { MaterialIcons } from '@expo/vector-icons';
 
 type ContainerProps = {
   mode: 'contained' | 'outlined';
@@ -41,4 +42,13 @@ export const Title = styled.Text<TitleProps>`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme, mode }) =>
     mode === 'contained' ? theme.COLORS.WHITE : theme.COLORS.GRAY_100};
+`;
+
+export const Icon = styled(MaterialIcons).attrs<TitleProps>(
+  ({ theme, mode }) => ({
+    size: 18,
+    color: mode === 'contained' ? theme.COLORS.WHITE : theme.COLORS.GRAY_100,
+  })
+)`
+  margin-right: 16px;
 `;
