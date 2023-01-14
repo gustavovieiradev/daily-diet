@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './src/theme';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Home } from './src/screens/Home';
+import Statistic from './src/screens/Statistic';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
@@ -19,7 +20,8 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
-        <Home />
+        {/* <Home /> */}
+        <Statistic />
       </SafeAreaProvider>
     </ThemeProvider>
   );
