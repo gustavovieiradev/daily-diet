@@ -1,12 +1,18 @@
 import React from 'react';
-import { View } from 'react-native';
-import { Container, Label } from './styles';
+import { TextInputProps } from 'react-native';
+import { Container, InputView, Label, TextInput } from './styles';
 
-export const Input: React.FC = () => {
+type Props = TextInputProps & {
+  label: string;
+};
+
+export const Input: React.FC<Props> = ({ label, multiline, ...rest }) => {
   return (
-    <View style={{ width: '100%' }}>
-      <Label>Label</Label>
-      <Container></Container>
-    </View>
+    <Container>
+      <Label>{label}</Label>
+      <InputView multiline={multiline}>
+        <TextInput {...rest} />
+      </InputView>
+    </Container>
   );
 };
