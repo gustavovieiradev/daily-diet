@@ -24,12 +24,6 @@ export const HeaderDescription = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
 
-export const HeaderBack = styled.TouchableOpacity`
-  position: absolute;
-  top: 56px;
-  left: 24px;
-`;
-
 export const Content = styled.View`
   height: 100%;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
@@ -81,8 +75,3 @@ export const BoxDescription = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;
-
-export const BackIcon = styled(ArrowLeft).attrs(({ theme }) => ({
-  size: 24,
-  color: theme.COLORS.GREEN_DARK,
-}))``;

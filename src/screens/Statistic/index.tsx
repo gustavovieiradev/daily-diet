@@ -1,13 +1,13 @@
 import React from 'react';
+import { useTheme } from 'styled-components/native';
+import BackButton from '../../components/BackButton';
 
 import {
   Container,
-  HeaderBack,
   Content,
   Header,
   HeaderDescription,
   HeaderTitle,
-  BackIcon,
   Title,
   Box,
   BoxTitle,
@@ -17,12 +17,11 @@ import {
 } from './styles';
 
 const Statistic: React.FC = () => {
+  const theme = useTheme();
   return (
     <Container>
       <Header>
-        <HeaderBack>
-          <BackIcon />
-        </HeaderBack>
+        <BackButton color={theme.COLORS.GREEN_DARK} />
         <HeaderTitle>90%</HeaderTitle>
         <HeaderDescription>das refeições dentro da dieta</HeaderDescription>
       </Header>
