@@ -9,6 +9,7 @@ import theme from './src/theme';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Home } from './src/screens/Home';
 import Statistic from './src/screens/Statistic';
+import FormDiet from './src/screens/FormDiet';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
@@ -21,7 +22,8 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
         {/* <Home /> */}
-        <Statistic />
+        {/* <Statistic /> */}
+        <FormDiet />
       </SafeAreaProvider>
     </ThemeProvider>
   );
