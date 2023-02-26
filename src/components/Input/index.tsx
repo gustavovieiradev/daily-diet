@@ -11,7 +11,7 @@ export const Input: React.FC<Props> = ({ label, multiline, ...rest }) => {
     <Container>
       <Label>{label}</Label>
       <InputView multiline={multiline}>
-        <TextInput {...rest} />
+        <TextInput multiline={multiline} {...rest} />
       </InputView>
     </Container>
   );
