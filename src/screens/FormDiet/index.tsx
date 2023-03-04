@@ -1,11 +1,13 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import BackButton from '../../components/BackButton';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Select } from '../../components/Select';
 import Space from '../../components/Space';
+import { dietCreate } from '../../storage/diet/dietCreate';
 import {
   Action,
   Column,
@@ -20,16 +22,45 @@ import {
 type ValueStatus = 'on' | 'off';
 
 const FormDiet: React.FC = () => {
+  // hook theme
   const theme = useTheme();
 
+  // hook navigation
+  const navigation = useNavigation();
+
   // hook state status diet
-  const [statusDiet, setStatuDiet] = useState<ValueStatus>();
-  // hook state status diet
-  const [name, setName] = useState<ValueStatus>();
+  const [statusDiet, setStatuDiet] = useState<ValueStatus>('on');
+  // hook state name diet
+  const [name, setName] = useState('');
+  // hook state description diet
+  const [description, setDescription] = useState('');
+  // hook state date diet
+  const [date, setDate] = useState('');
+  // hook state hour diet
+  const [hour, setHour] = useState('');
 
   // action set status diet
   function handleSetStatus(value: ValueStatus) {
     setStatuDiet(value);
+  }
+
+  // action save form diet
+  async function handleSave() {
+    try {
+      await dietCreate({
+        date,
+        description,
+        hour,
+        name,
+        status: statusDiet,
+      });
+
+      Alert.alert('Refeição cadastrada com sucesso!');
+
+      navigation.navigate('detail');
+    } catch (err) {
+      Alert.alert('Preencha todos os campos de forma correta!');
+    }
   }
 
   return (
@@ -39,15 +70,15 @@ const FormDiet: React.FC = () => {
         <HeaderTitle>Nova refeição</HeaderTitle>
       </Header>
       <Content>
-        <Input label="Nome" />
-        <Input label="Descrição" multiline />
+        <Input label="Nome" onChangeText={setName} />
+        <Input label="Descrição" onChangeText={setDescription} multiline />
         <Row>
           <Column>
-            <Input label="Data" />
+            <Input label="Data" onChangeText={setDate} />
           </Column>
           <Space width={10} />
           <Column>
-            <Input label="Hora" />
+            <Input label="Hora" onChangeText={setHour} />
           </Column>
         </Row>
 
@@ -71,7 +102,7 @@ const FormDiet: React.FC = () => {
         </Row>
       </Content>
       <Action>
-        <Button title="Cadastrar refeição" />
+        <Button title="Cadastrar refeição" onPress={handleSave} />
       </Action>
     </Container>
   );
