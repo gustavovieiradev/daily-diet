@@ -1,15 +1,22 @@
 import styled from 'styled-components/native';
 
+type ValueStatus = 'on' | 'off';
+
+type TitleProps = {
+  status: ValueStatus;
+};
+
 export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text<TitleProps>`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   font-size: ${({ theme }) => theme.FONT_SIZE.XXL}px;
-  color: ${({ theme }) => theme.COLORS.GREEN_DARK};
+  color: ${({ theme, status }) =>
+    status === 'on' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
 `;
 
 export const Description = styled.Text`
