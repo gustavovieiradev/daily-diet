@@ -64,7 +64,7 @@ export const GroupHeader = styled.Text`
   margin-bottom: 12px;
 `;
 
-export const GroupItem = styled.View`
+export const GroupItem = styled.TouchableOpacity`
   border: 1px solid ${({ theme }) => theme.COLORS.GRAY_500};
   padding: 14px 16px 14px 12px;
   margin-bottom: 12px;
