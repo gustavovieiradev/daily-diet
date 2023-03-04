@@ -5,6 +5,10 @@ type ContainerProps = {
   status: boolean;
 };
 
+type StatusProps = {
+  status: 'on' | 'off';
+};
+
 export const Container = styled.TouchableOpacity<ContainerProps>`
   flex: 1;
   padding: 16px 12px;
@@ -32,4 +36,13 @@ export const Title = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   color: ${({ theme }) => theme.COLORS.GRAY_100};
+`;
+
+export const Status = styled.View<StatusProps>`
+  width: 8px;
+  margin-right: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background-color: ${({ theme, status }) =>
+    status === 'on' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
 `;

@@ -38,3 +38,14 @@ export const Action = styled.View`
   padding: 24px;
   bottom: 0;
 `;
+
+export const Label = styled.Text`
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.GRAY_200};
+  margin-bottom: 4px;
+`;
+
+export const Column = styled.View`
+  flex: 1;
+`;

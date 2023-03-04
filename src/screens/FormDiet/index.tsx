@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import BackButton from '../../components/BackButton';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
-import { Action, Container, Content, Header, HeaderTitle, Row } from './styles';
+import { Select } from '../../components/Select';
+import Space from '../../components/Space';
+import {
+  Action,
+  Column,
+  Container,
+  Content,
+  Header,
+  HeaderTitle,
+  Label,
+  Row,
+} from './styles';
+
+type ValueStatus = 'on' | 'off';
 
 const FormDiet: React.FC = () => {
   const theme = useTheme();
+
+  const [statusDiet, setStatuDiet] = useState<ValueStatus>();
+
+  // action set status diet
+  function handleSetStatus(value: ValueStatus) {
+    setStatuDiet(value);
+  }
+
   return (
     <Container>
       <Header>
@@ -18,13 +39,32 @@ const FormDiet: React.FC = () => {
         <Input label="Nome" />
         <Input label="Descrição" multiline />
         <Row>
-          <View style={{ flex: 1 }}>
+          <Column>
             <Input label="Data" />
-          </View>
-          <View style={{ width: 10 }} />
-          <View style={{ flex: 1 }}>
+          </Column>
+          <Space width={10} />
+          <Column>
             <Input label="Hora" />
-          </View>
+          </Column>
+        </Row>
+
+        <Label>Está dentro da dieta?</Label>
+        <Row>
+          <Select
+            title="Sim"
+            active={statusDiet === 'on'}
+            type="success"
+            status="on"
+            onPress={() => handleSetStatus('on')}
+          />
+          <Space width={10} />
+          <Select
+            title="Não"
+            active={statusDiet === 'off'}
+            type="danger"
+            status="off"
+            onPress={() => handleSetStatus('off')}
+          />
         </Row>
       </Content>
       <Action>
