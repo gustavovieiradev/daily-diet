@@ -22,7 +22,10 @@ type ValueStatus = 'on' | 'off';
 const FormDiet: React.FC = () => {
   const theme = useTheme();
 
+  // hook state status diet
   const [statusDiet, setStatuDiet] = useState<ValueStatus>();
+  // hook state status diet
+  const [name, setName] = useState<ValueStatus>();
 
   // action set status diet
   function handleSetStatus(value: ValueStatus) {
