@@ -5,6 +5,7 @@ import { Home } from '../screens/Home';
 import FormDiet from '../screens/FormDiet';
 import DetailDiet from '../screens/DetailDiet';
 import Statistic from '../screens/Statistic';
+import Feedback from '../screens/Feedback';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -15,6 +16,7 @@ export const AppRoutes: React.FC = () => {
       <Screen name="new" component={FormDiet} />
       <Screen name="detail" component={DetailDiet} />
       <Screen name="statistic" component={Statistic} />
+      <Screen name="feedback" component={Feedback} />
     </Navigator>
   );
 };

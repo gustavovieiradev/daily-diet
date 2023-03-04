@@ -5,6 +5,7 @@ export declare global {
       new: undefined;
       detail: undefined;
       statistic: undefined;
+      feedback: undefined;
       // players: {
       //   group: string;
       // };
