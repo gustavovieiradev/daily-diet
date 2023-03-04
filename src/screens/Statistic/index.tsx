@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { useTheme } from 'styled-components/native';
 import BackButton from '../../components/BackButton';
@@ -17,7 +18,9 @@ import {
 } from './styles';
 
 const Statistic: React.FC = () => {
+  // hook theme
   const theme = useTheme();
+
   return (
     <Container>
       <Header>
