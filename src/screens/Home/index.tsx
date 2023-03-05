@@ -59,8 +59,6 @@ export const Home: React.FC = () => {
     try {
       const dietsGrouped = await dietGetGroupedByDate();
 
-      console.log(99999);
-
       setDiets(dietsGrouped);
     } catch (err) {}
   }
@@ -70,19 +68,6 @@ export const Home: React.FC = () => {
       handleLoadDiets();
     }, [])
   );
-
-  function renderItem(item: Diet) {
-    return (
-      <GroupItem onPress={handleGoDetail} key={item.name}>
-        <GroupItemStart>
-          <GroupHour>{item.hour}</GroupHour>
-          <GroupDivider />
-          <GroupName>{item.name}</GroupName>
-        </GroupItemStart>
-        <GroupStatus status={item.status} />
-      </GroupItem>
-    );
-  }
 
   return (
     <Container>
