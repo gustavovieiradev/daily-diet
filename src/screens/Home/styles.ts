@@ -44,11 +44,6 @@ export const ButtonAlert = styled.TouchableOpacity`
   right: 10px;
 `;
 
-export const Icon = styled(ArrowUpRight).attrs(({ theme }) => ({
-  size: 24,
-  color: theme.COLORS.GREEN_DARK,
-}))``;
-
 export const TitleList = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   color: ${({ theme }) => theme.COLORS.GRAY_100};
@@ -98,9 +93,19 @@ export const GroupName = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_100};
 `;
 
-export const GroupStatus = styled.View`
+type GroupStatusProps = {
+  status: 'on' | 'off';
+};
+
+export const GroupStatus = styled.View<GroupStatusProps>`
   width: 14px;
   height: 14px;
   border-radius: 12px;
-  background-color: ${({ theme }) => theme.COLORS.RED_MID};
+  background-color: ${({ theme, status }) =>
+    status === 'off' ? theme.COLORS.RED_MID : theme.COLORS.GREEN_MID};
 `;
+
+export const Icon = styled(ArrowUpRight).attrs(({ theme }) => ({
+  size: 24,
+  color: theme.COLORS.GREEN_DARK,
+}))``;

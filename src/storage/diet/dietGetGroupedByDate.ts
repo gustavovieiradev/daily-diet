@@ -9,8 +9,8 @@ type Diet = {
 };
 
 type DietGroupedDate = {
-  date: string;
-  diets: Diet[];
+  title: string;
+  data: Diet[];
 };
 
 /**
@@ -28,15 +28,15 @@ export async function dietGetGroupedByDate() {
 
     allDiets.forEach((ad) => {
       const indexDietsGrouped = dietsGrouped.findIndex(
-        (dg) => dg.date === ad.date
+        (dg) => dg.title === ad.date
       );
 
       if (indexDietsGrouped > -1) {
-        dietsGrouped[indexDietsGrouped].diets.push(ad);
+        dietsGrouped[indexDietsGrouped].data.push(ad);
       } else {
         dietsGrouped.push({
-          date: ad.date,
-          diets: [ad],
+          title: ad.date,
+          data: [ad],
         });
       }
     });

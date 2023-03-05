@@ -1,7 +1,7 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { PhosphorLogo, Plus } from 'phosphor-react-native';
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { SectionList, View } from 'react-native';
 
 import logoImg from '../../assets/logo.png';
 import { Button } from '../../components/Button';
@@ -34,8 +34,8 @@ type Diet = {
 };
 
 type DietGroupedDate = {
-  date: string;
-  diets: Diet[];
+  title: string;
+  data: Diet[];
 };
 
 export const Home: React.FC = () => {
@@ -66,6 +66,19 @@ export const Home: React.FC = () => {
     handleLoadDiets();
   });
 
+  function renderItem(item: Diet) {
+    return (
+      <GroupItem onPress={handleGoDetail} key={item.name}>
+        <GroupItemStart>
+          <GroupHour>{item.hour}</GroupHour>
+          <GroupDivider />
+          <GroupName>{item.name}</GroupName>
+        </GroupItemStart>
+        <GroupStatus status={item.status} />
+      </GroupItem>
+    );
+  }
+
   return (
     <Container>
       <Logo source={logoImg} />
@@ -79,22 +92,25 @@ export const Home: React.FC = () => {
       <TitleList>Refeições</TitleList>
       <Button title="Nova refeição" icon="add" onPress={handleGoNew} />
 
-      {diets.length > 0 &&
-        diets.map((i) => (
-          <View key={i.date}>
-            <GroupHeader>{i.date}</GroupHeader>
-            {i.diets.map((d) => (
-              <GroupItem onPress={handleGoDetail} key={d.name}>
-                <GroupItemStart>
-                  <GroupHour>{d.hour}</GroupHour>
-                  <GroupDivider />
-                  <GroupName>{d.name}</GroupName>
-                </GroupItemStart>
-                <GroupStatus />
-              </GroupItem>
-            ))}
-          </View>
-        ))}
+      {diets.length > 0 && (
+        <SectionList
+          sections={diets}
+          keyExtractor={(item) => item.name}
+          renderSectionHeader={({ section }) => (
+            <GroupHeader>{section.title}</GroupHeader>
+          )}
+          renderItem={({ item }) => (
+            <GroupItem onPress={handleGoDetail} key={item.name}>
+              <GroupItemStart>
+                <GroupHour>{item.hour}</GroupHour>
+                <GroupDivider />
+                <GroupName>{item.name}</GroupName>
+              </GroupItemStart>
+              <GroupStatus status={item.status} />
+            </GroupItem>
+          )}
+        />
+      )}
     </Container>
   );
 };
