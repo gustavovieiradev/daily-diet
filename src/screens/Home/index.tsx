@@ -1,6 +1,6 @@
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { PhosphorLogo, Plus } from 'phosphor-react-native';
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { SectionList, View } from 'react-native';
 
 import logoImg from '../../assets/logo.png';
@@ -58,13 +58,18 @@ export const Home: React.FC = () => {
   async function handleLoadDiets() {
     try {
       const dietsGrouped = await dietGetGroupedByDate();
+
+      console.log(99999);
+
       setDiets(dietsGrouped);
     } catch (err) {}
   }
 
-  useFocusEffect(() => {
-    handleLoadDiets();
-  });
+  useFocusEffect(
+    useCallback(() => {
+      handleLoadDiets();
+    }, [])
+  );
 
   function renderItem(item: Diet) {
     return (
